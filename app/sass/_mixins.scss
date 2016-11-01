@@ -1,0 +1,89 @@
+//fonts
+@mixin main-font1() {
+  font-family: "helvetica-regular", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin main-font2() {
+  font-family: "helvetica-bold", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin main-font3() {
+  font-family: "helvetica-light", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin main-font4() {
+  font-family: "helvetica-thin", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin main-font5() {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+//justify
+@mixin justify() {
+  text-align: justify;
+
+  &:after {
+    display: inline-block;
+    width: 100%;
+    content: '';
+  }
+}
+
+//absoluteCenter
+@mixin absoluteCenter() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate( -50%, -50% );
+}
+@mixin absoluteCenterX() {
+  position: absolute;
+  left: 50%;
+  transform: translateX( -50% );
+}
+@mixin absoluteCenterY() {
+  position: absolute;
+  top: 50%;
+  transform: translateY( -50% );
+}
+
+//transform
+@mixin transform-translate( $posX, $posY ) {
+  -webkit-transform: translate( $posX, $posY );
+  transform: translate( $posX, $posY );
+}
+@mixin transform-rotate( $deg ) {
+  -webkit-transform: rotate( $deg + deg );
+  transform: rotate( $deg + deg );
+}
+@mixin transform-scale( $num ) {
+  -webkit-transform: scale( $num );
+  transform: scale( $num );
+}
+
+//transition
+@mixin transition( $property, $duration, $delay ) {
+  -webkit-transition: $property $duration+s linear $delay+s;
+  transition: $property $duration+s linear $delay+s;
+}
+@mixin transition-opacity-visibility( $duration, $function ) {
+  -webkit-transition: opacity $duration+s $function, visibility $duration+s $function;
+  transition: opacity $duration+s $function, visibility $duration+s $function;
+}
+@mixin transition-opacity-transform( $duration, $function ) {
+  -webkit-transition: opacity $duration+s $function, transform $duration+s $function;
+  transition: opacity $duration+s $function, transform $duration+s $function;
+}
+@mixin fixedCenterY() {
+  position: fixed;
+  top: 50%;
+  transform: translateY( -50% );
+}
