@@ -1,19 +1,153 @@
 
 .listing {
   background: #f2f4f5;
+  padding-bottom: 12px;
 
-  &__wrap {
+  &__filter {
     position: relative;
-    max-width: 1873px;
-    padding: 0 15px;
-    margin: 0 auto;
-  }
-  &__catalog {
+    left: -2px;
+    max-width: 1095px;
+    margin: 0 auto 17px;
+    padding: 32px 40px 26px;
+    background: $main-white-color;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 0 54px 0 rgba(50, 50, 50, 0.18);
 
-    > ul {
-      padding-top: 28px;
-      border-top: 1px solid $main-border-color;
+    fieldset {
+      display: inline-block;
+      vertical-align: top;
+      margin-bottom: 9px;
+      margin-right: 12px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+      input {
+        width: 169px;
+        height: 40px;
+        padding: 0 16px;
+        border: 2px solid $main-border-color;
+        border-radius: 7px;
+        color: #9e9e9e;
+        font-size: 15px;
+        @include main-font5();
+        @include transition(border-color, .3, 0);
+
+        &::-webkit-input-placeholder {
+          color: #9e9e9e;
+          @include transition(color, .3, 0);
+        }
+        &:-moz-placeholder {
+          color: #9e9e9e;
+          @include transition(color, .3, 0);
+        }
+        &.placeholder {
+          color: #9e9e9e;
+          @include transition(color, .3, 0);
+        }
+
+        &:focus {
+          border-color: #616161;
+
+          &::-webkit-input-placeholder {
+            color: transparent;
+          }
+          &:-moz-placeholder {
+            color: transparent;
+          }
+          &.placeholder {
+            color: transparent;
+          }
+        }
+      }
     }
+  }
+  &__filter-btn {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 19px 0 25px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px 0 rgba(50, 50, 50, 0.2);
+    background: #f2f4f5;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #616161;
+    letter-spacing: 1.2px;
+    line-height: 36px;
+    @include main-font2();
+
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+      width: 7px;
+      height: 7px;
+      margin: 0 20px 0 0;
+      border: 2px solid #616161;
+      border-radius: 50%;
+
+      &:after,
+      &:before{
+        position: absolute;
+        top: -2px;
+        left: -10px;
+        width: 3px;
+        height: 3px;
+        border: 2px solid #616161;
+        border-radius: 50%;
+        content: '';
+      }
+      &:after {
+        left: auto;
+        right: -10px;
+      }
+    }
+  }
+  &__filter-results {
+
+    span {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 7px;
+      padding: 0 12px;
+      border-radius: 5px;
+      background: #a9a9a9;
+      font-size: 13px;
+      line-height: 26px;
+      color: $main-white-color;
+      cursor: pointer;
+      @include transition(all, .3, 0);
+
+      &:last-child {
+        margin-right: 0;
+      }
+      &:hover {
+        background: #292929;
+
+        i {
+          color: $main-green-color;
+        }
+      }
+      i {
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        margin-right: 7px;
+        color: $main-white-color;
+        line-height: 26px;
+        @include transition(all, .3, 0);
+
+        &:hover {
+          -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+        }
+      }
+    }
+  }
+  &__wrap {
+    padding: 0 15px;
   }
   &__catalog-gallery.swiper-container {
     position: absolute;
@@ -67,7 +201,7 @@
     font-size: 18px;
     color: $main-white-color;
     letter-spacing: 0.6px;
-    @include main-font5();
+    @include main-font6();
     font-style: italic;
   }
   &__catalog-price {
@@ -84,25 +218,25 @@
     @include main-font3();
   }
   &__catalog-sort {
-    margin-bottom: 22px;
-    padding-left: 2px;
+    margin-bottom: 19px;
+    padding-left: 3px;
 
     button {
       display: inline-block;
       vertical-align: top;
-      margin-right: 29px;
+      margin-right: 24px;
       background: transparent;
       border: none;
       padding: 0;
-      font-size: 19px;
+      font-size: 16.5px;
+      letter-spacing: 0.1px;
       color: #b5b5b5;
       @include main-font2();
       @include transition(color, .3, 0);
 
       i {
-        padding-left: 1px;
         color: #b5b5b5;
-        font-size: 16px;
+        font-size: 14px;
         @include transition(color, .3, 0);
       }
       &.active,
@@ -115,10 +249,16 @@
       }
     }
   }
+  &__catalog-list {
+    position: relative;
+    padding-top: 24px;
+    padding-right: 20px;
+    border-top: 1px solid $main-border-color;
+  }
   &__catalog-item {
     overflow: hidden;
-    margin-bottom: 14px;
-    border-radius: 10px;
+    margin-bottom: 12px;
+    border-radius: 7px;
     box-shadow: 0 2px 2px 0 rgba(50, 50, 50, 0.2);
 
     &:hover {
@@ -164,19 +304,20 @@
     @include transition(opacity, .3, 0);
   }
   &__catalog-item-wrap {
-    min-height: 95px;
-    padding: 15px 15px 0;
+    min-height: 82px;
+    padding: 15px 15px 10px;
     color: #7f7f7f;
 
     > div {
-      margin-bottom: 6px;
-      font-size: 16px;
+      margin-bottom: 3px;
+      font-size: 15px;
+      letter-spacing: 0.4px;
       line-height: 25px;
 
       strong {
         display: inline;
         color: #333333;
-        letter-spacing: 0.4px;
+        letter-spacing: 0.7px;
         @include main-font2();
       }
       address {
@@ -191,7 +332,9 @@
         display: inline-block;
         vertical-align: top;
         margin-bottom: 6px;
-        font-size: 16px;
+        margin-right: 5px;
+        font-size: 15px;
+        letter-spacing: -0.7px;
         line-height: 25px;
 
         &:last-child {
@@ -201,10 +344,12 @@
           }
         }
         &:after {
-          position: relative; 
+          position: relative;
+          display: inline-block;
           vertical-align: middle;
-          width: 4px;
-          height: 4px;
+          width: 6px;
+          height: 6px;
+          margin-left: 11px;
           background: #7f7f7f;
           border-radius: 50%;
           content: '';
@@ -214,6 +359,7 @@
   }
   &__map {
     width: 100%;
+    border: 1px solid $main-border-color;
     padding-bottom: 50%;
   }
 }
@@ -222,13 +368,10 @@
 
   .listing {
 
-    &__catalog {
-
-      > ul {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
-      }
+    &__catalog-list {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
     }
     &__catalog-item {
       display: inline-block;
@@ -278,12 +421,12 @@
   .listing {
 
     &__wrap {
-      padding: 0 60px;
+      padding: 0 63px;
     }
     &__catalog {
       display: inline-block;
       vertical-align: top;
-      width: 58.7%;
+      width: calc(58.1% + 20px);
     }
     &__catalog-name {
       font-size: 20px;
@@ -291,21 +434,30 @@
     &__catalog-price {
       font-size: 20px;
     }
+    &__catalog-list {
+      padding-bottom: 3px;
+    }
     &__catalog-item {
       width: 49.4%;
+
+      &:last-of-type,
+      &:nth-last-of-type(2){
+        margin-bottom: 0;
+      }
     }
     &__catalog-item-name {
-      padding: 0 25px 25px;
+      padding: 0 21px 22px;
     }
     &__catalog-item-wrap {
-      padding: 19px 24px 0;
+      padding: 13px 22px 10px;
     }
     &__map {
       position: absolute;
-      top: 46px;
+      top: 103px;
       right: 0;
       bottom: 13px;
-      width: 39.9%;
+      width: 40.6%;
+      padding: 0;
     }
   }
 }
@@ -315,10 +467,10 @@
   .listing {
 
     &__catalog-name {
-      font-size: 25px;
+      font-size: 22px;
     }
     &__catalog-price {
-      font-size: 24px;
+      font-size: 21px;
     }
     &__catalog-item-pics {
 
@@ -329,12 +481,13 @@
     &__catalog-item-wrap {
 
       > div {
-        font-size: 18px;
+        //font-size: 15px;
       }
       > ul {
 
         li {
-          font-size: 18px;
+          //font-size: 17px;
+          //letter-spacing: -0.7px;
         }
       }
     }

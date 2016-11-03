@@ -20,6 +20,11 @@
   font-style: normal;
 }
 @mixin main-font5() {
+  font-family: 'helvetica-medium', serif;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin main-font6() {
   font-family: 'Libre Baskerville', serif;
   font-weight: 400;
   font-style: normal;

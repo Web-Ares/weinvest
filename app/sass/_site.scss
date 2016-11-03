@@ -5,19 +5,37 @@
   min-width: 320px;
   min-height: 100%;
   @include main-font1();
+  overflow-x: auto;
+  overflow-y: auto;
+
+  &_no-scroll {
+    overflow: hidden;
+
+    &:after {
+      display: none;
+    }
+  }
 
   &__header {
     overflow: hidden;
+    position: relative;
     z-index: 4;
     height: 42px;
     background: #f7f9fa;
 
-    &-layout {
-      position: relative;
-      padding: 0 15px;
-      max-width: 1867px;
-      margin: 0 auto;
-    }
+    //&_fixed {
+    //  position: fixed;
+    //  top: 0;
+    //  left: 0;
+    //  right: 0;
+    //}
+
+    //&-layout {
+    //  position: relative;
+    //  padding: 0 15px;
+    //  max-width: 1867px;
+    //  margin: 0 auto;
+    //}
   }
   &__menu {
     position: fixed;
@@ -154,7 +172,6 @@
       letter-spacing: 2.9px;
       color: $footer-crafted-color;
       text-transform: uppercase;
-      //@include main-font7();
 
       a {
         position: relative;
@@ -207,7 +224,7 @@
   .site {
 
     &__header {
-      height: 84px;
+      height: 74px;
       background: #292929;
       @include transition(all, .3, 0);
     }
@@ -215,7 +232,7 @@
       position: relative;
       left: auto;
       height: auto;
-      padding: 0 0;
+      padding: 0 44px 0 0;
       text-align: right;
       background: transparent;
       transform: translate(0, 0);
@@ -233,9 +250,9 @@
           position: relative;
           vertical-align: top;
           display: inline-block;
-          padding: 6px 24px 0;
-          font-size: 17px;
-          line-height: 78px;
+          padding: 6px 20.6px 0;
+          font-size: 15px;
+          line-height: 68px;
           letter-spacing: 0.1px;
           @include transition(color, .3, 0);
 
