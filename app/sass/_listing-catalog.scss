@@ -1,31 +1,42 @@
 
 .listing {
   background: #f2f4f5;
+  padding-top: 30px;
   padding-bottom: 12px;
 
+  .btn-filter {
+    position: fixed;
+    z-index: 10;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    bottom: 30px;
+  }
+
   &__filter {
-    position: relative;
-    left: -2px;
-    max-width: 1095px;
-    margin: 0 auto 17px;
-    padding: 32px 40px 26px;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 48.7%;
+    width: 93.6%;
+    padding: 32px 15px;
     background: $main-white-color;
     border-radius: 0 0 5px 5px;
     box-shadow: 0 0 54px 0 rgba(50, 50, 50, 0.18);
+    -webkit-transform: translate(-50%, -100%);
+    transform: translate(-50%, -100%);
+    @include transition(transform, .3, 0);
 
     fieldset {
-      display: inline-block;
-      vertical-align: top;
       margin-bottom: 9px;
-      margin-right: 12px;
 
       &:last-child {
         margin-right: 0;
       }
       input {
-        width: 169px;
+        width: 100%;
         height: 40px;
-        padding: 0 16px;
+        padding: 2px 16px 0;
         border: 2px solid $main-border-color;
         border-radius: 7px;
         color: #9e9e9e;
@@ -60,12 +71,39 @@
           }
         }
       }
+
+      &.listing__filter-location {
+        position: relative;
+
+        i {
+          @include absoluteCenterY();
+          left: 18px;
+          font-size: 23px;
+          color: #9e9e9e;
+          @include transition(color, .3, 0);
+        }
+        input {
+          width: 100%;
+          padding-left: 47px;
+
+          &:focus {
+
+            i {
+              color: $main-green-color;
+            }
+          }
+        }
+      }
+    }
+    &.active {
+      -webkit-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
     }
   }
   &__filter-btn {
     display: inline-block;
     vertical-align: top;
-    padding: 0 19px 0 25px;
+    padding: 4px 19px 0 25px;
     border: none;
     border-radius: 4px;
     box-shadow: 0 2px 2px 0 rgba(50, 50, 50, 0.2);
@@ -76,6 +114,7 @@
     letter-spacing: 1.2px;
     line-height: 36px;
     @include main-font2();
+    @include transition(background, .3, 0);
 
     span {
       display: inline-block;
@@ -104,6 +143,141 @@
         right: -10px;
       }
     }
+    &:hover {
+      background: #ebebeb;
+    }
+  }
+  &__filter-categories {
+    display: inline-block;
+
+    &.active {
+
+      .listing__filter-categories-btn {
+        color: $main-green-color;
+        border-color: $main-border-color;
+        background: $main-white-color;
+
+        i {
+          color: $main-green-color;
+        }
+        &:after {
+          opacity: 1;
+        }
+      }
+      .listing__filter-categories-dropdown {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+  &__filter-categories-btn {
+    display: inline-block;
+    position: relative;
+    padding: 10px 24px;
+    border-radius: 7px 7px 0 0;
+    border: 1px solid transparent;
+    border-bottom: none;
+    font-size: 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+    @include main-font5();
+    @include transition(all, .3, 0);
+
+    i {
+      position: relative;
+      z-index: 2;
+      top: 1px;
+      margin-left: 9px;
+      font-size: 17px;
+      font-weight: 700;
+      @include transition(color, .3, 0);
+    }
+    &:after {
+      opacity: 0;
+      position: absolute;
+      z-index: 6;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 2px;
+      background: $main-white-color;
+      content: '';
+      @include transition(opacity, .3, 0);
+    }
+  }
+  &__filter-categories-dropdown {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    z-index: 5;
+    width: 250px;
+    padding: 20px;
+    border-radius: 0 7px 7px 7px;
+    border: 1px solid $main-border-color;
+    background: $main-white-color;
+    @include transition(all, .3, 0);
+
+    .nice-checkbox {
+      display: block;
+      margin-bottom: 23px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  &__filter-rooms {
+    text-align: center;
+
+    .websters-select {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 10px;
+      text-align: left;
+
+      &:last-child {
+        margin-top: 10px;
+      }
+    }
+  }
+  &__filter-budget {
+
+    input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  &__filter-budget-list {
+    padding-top: 21px;
+
+    &_min {
+      display: block;
+    }
+    &_max {
+      display: none;
+
+      li {
+        text-align: right;
+      }
+    }
+
+    li {
+      padding: 5px 2px;
+      border-top: 1px solid $main-border-color;
+      cursor: pointer;
+      font-size: 16px;
+      @include main-font5();
+      @include transition(all, .3, 0);
+
+      &:last-child {
+        border-bottom: 1px solid $main-border-color;
+      }
+      &:hover,
+      &.active {
+        background: $main-green-color;
+        color: $main-white-color;
+      }
+    }
   }
   &__filter-results {
 
@@ -111,6 +285,7 @@
       display: inline-block;
       vertical-align: top;
       margin-right: 7px;
+      margin-bottom: 5px;
       padding: 0 12px;
       border-radius: 5px;
       background: #a9a9a9;
@@ -122,6 +297,7 @@
 
       &:last-child {
         margin-right: 0;
+        margin-bottom: 0;
       }
       &:hover {
         background: #292929;
@@ -153,6 +329,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    border-radius: 7px 7px 0 0;
 
     .swiper-slide {
       width: 100%;
@@ -252,11 +429,11 @@
   &__catalog-list {
     position: relative;
     padding-top: 24px;
-    padding-right: 20px;
     border-top: 1px solid $main-border-color;
   }
   &__catalog-item {
     overflow: hidden;
+    display: block;
     margin-bottom: 12px;
     border-radius: 7px;
     box-shadow: 0 2px 2px 0 rgba(50, 50, 50, 0.2);
@@ -306,6 +483,7 @@
   &__catalog-item-wrap {
     min-height: 82px;
     padding: 15px 15px 10px;
+    background: $main-white-color;
     color: #7f7f7f;
 
     > div {
@@ -419,7 +597,100 @@
 @media (min-width: $desktop) {
 
   .listing {
+    padding-top: 0;
 
+    &__filter {
+      position: relative;
+      left: -2px;
+      width: auto;
+      max-width: 1095px;
+      margin: 0 auto 17px;
+      padding: 32px 30px 26px 40px;
+      -webkit-transform: translate(0);
+      transform: translate(0);
+
+      fieldset {
+        display: inline-block;
+        vertical-align: top;
+        margin-bottom: 9px;
+        margin-right: 10px;
+
+        &:nth-child(2) {
+          margin-right: -2px;
+        }
+        &:nth-child(3) {
+          margin-right: -10px;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+        input {
+          width: 169px;
+        }
+
+        &.listing__filter-location {
+
+          input {
+            width: 201px;
+          }
+        }
+      }
+    }
+    &__filter-categories {
+      margin-right: -2px;
+
+      &:nth-of-type(2) {
+        margin-right: 5px;
+      }
+      &:nth-of-type(3) {
+        margin-right: 5px;
+      }
+
+      &.active {
+
+        .listing__filter-categories-btn {
+          color: $main-green-color;
+          border-color: $main-border-color;
+          background: $main-white-color;
+
+          i {
+            color: $main-green-color;
+          }
+          &:after {
+            display: block;
+          }
+        }
+        .listing__filter-categories-dropdown {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+    &__filter-categories-dropdown {
+      width: auto;
+      padding: 19px 37px 21px 27px;
+    }
+    &__filter-rooms {
+
+      .websters-select {
+        display: inline-block;
+        width: 180px;
+        margin-right: 5px;
+        margin-bottom: 0;
+
+        &:last-child {
+          margin-left: 5px;
+          margin-top: 0;
+        }
+      }
+    }
+    &__filter-budget {
+
+      input {
+        width: 192px;
+        margin: 0;
+      }
+    }
     &__wrap {
       padding: 0 63px;
     }
@@ -435,6 +706,7 @@
       font-size: 20px;
     }
     &__catalog-list {
+      padding-right: 20px;
       padding-bottom: 3px;
     }
     &__catalog-item {
@@ -452,8 +724,7 @@
       padding: 13px 22px 10px;
     }
     &__map {
-      position: absolute;
-      top: 103px;
+      position: absolute !important;
       right: 0;
       bottom: 13px;
       width: 40.6%;

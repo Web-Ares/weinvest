@@ -69,6 +69,15 @@
             <!--listing-->
             <div class="listing">
 
+                <!--btn-filter-->
+                <button class="btn-filter">
+                    <span>
+                        <span></span>
+                        Filter
+                    </span>
+                </button>
+                <!--/btn-filter-->
+
                 <!--listing__filter-->
                 <form action="#" class="listing__filter">
 
@@ -78,18 +87,163 @@
 
                     </fieldset>
 
-                    <fieldset>
+                    <!--listing__filter-categories-->
+                    <fieldset class="listing__filter-categories">
+
+                        <span class="listing__filter-categories-btn">
+                            TYPE
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </span>
+
+                        <!--listing__filter-categories-dropdown-->
+                        <div class="listing__filter-categories-dropdown">
+
+                            <!--nice-checkbox-->
+                            <div class="nice-checkbox">
+
+                                <input id="maison" type="checkbox">
+                                <label for="maison">Maisons</label>
+
+
+                            </div>
+                            <!--/nice-checkbox-->
+
+                            <!--nice-checkbox-->
+                            <div class="nice-checkbox">
+
+                                <input id="appartement" type="checkbox">
+                                <label for="appartement">Appartement</label>
+
+                            </div>
+                            <!--/nice-checkbox-->
+
+                            <!--nice-checkbox-->
+                            <div class="nice-checkbox">
+
+                                <input id="terrains" type="checkbox">
+                                <label for="terrains">Terrains</label>
+
+                            </div>
+                            <!--/nice-checkbox-->
+                            
+                        </div>
+                        <!--/listing__filter-categories-dropdown-->
+
+                    </fieldset>
+                    <!--/listing__filter-categories-->
+
+                    <!--listing__filter-categories-->
+                    <fieldset class="listing__filter-categories">
+
+                        <span class="listing__filter-categories-btn">
+                            CHAMBRES
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </span>
+
+                        <!--listing__filter-categories-dropdown-->
+                        <div class="listing__filter-categories-dropdown">
+
+                            <!--listing__filter-rooms-->
+                            <div class="listing__filter-rooms">
+
+                                <select name="min-rooms">
+                                    <option value="1">1 chambre</option>
+                                    <option value="2">2 chambre</option>
+                                    <option value="3">3 chambre</option>
+                                    <option value="4">4 chambre et +</option>
+                                </select>
+
+                                to
+
+                                <select name="max-rooms">
+                                    <option value="1">1 chambre</option>
+                                    <option value="2">2 chambre</option>
+                                    <option value="3">3 chambre</option>
+                                    <option value="4" selected>4 chambre et +</option>
+                                </select>
+
+                            </div>
+                            <!--/listing__filter-rooms-->
+
+                        </div>
+                        <!--/listing__filter-categories-dropdown-->
+
+                    </fieldset>
+                    <!--/listing__filter-categories-->
+
+                    <!--listing__filter-categories-->
+                    <fieldset class="listing__filter-categories">
+
+                        <span class="listing__filter-categories-btn">
+                            BUDGET
+                            <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </span>
+
+                        <!--listing__filter-categories-dropdown-->
+                        <div class="listing__filter-categories-dropdown">
+
+                            <!--listing__filter-budget-->
+                            <div class="listing__filter-budget">
+
+                                <!--listing__filter-budget-inputs-->
+                                <div class="listing__filter-budget-inputs">
+
+                                    <input name="price-min" type="text" placeholder="Min">
+                                    <input name="price-max" type="text" placeholder="Max">
+
+                                </div>
+                                <!--/listing__filter-budget-inputs-->
+
+                                <!--listing__filter-budget-list-->
+                                <ul class="listing__filter-budget-list listing__filter-budget-list_min">
+
+                                    <li>100</li>
+                                    <li>200</li>
+                                    <li>300</li>
+                                    <li>400</li>
+                                    <li>500</li>
+
+                                </ul>
+                                <!--/listing__filter-budget-list-->
+
+                                <!--listing__filter-budget-list-->
+                                <ul class="listing__filter-budget-list listing__filter-budget-list_max">
+
+                                    <li>200</li>
+                                    <li>300</li>
+                                    <li>400</li>
+                                    <li>500</li>
+                                    <li>600</li>
+                                    <li>700</li>
+
+                                </ul>
+                                <!--/listing__filter-budget-list-->
+
+                            </div>
+                            <!--/listing__filter-budge-->
+
+                        </div>
+                        <!--/listing__filter-categories-dropdown-->
+
+                    </fieldset>
+                    <!--/listing__filter-categories-->
+
+                    <!--listing__filter-location-->
+                    <fieldset class="listing__filter-location">
+
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
 
                         <input type="text" placeholder="Localisation">
 
                     </fieldset>
+                    <!--/listing__filter-location-->
 
                     <fieldset>
 
                         <!--btn-->
                         <button class="listing__filter-btn" type="button"><span></span>Plus de filtres</button>
                         <!--/btn-->
-                        
+
                     </fieldset>
 
                     <!--listing__filter-results-->

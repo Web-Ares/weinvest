@@ -26,14 +26,13 @@ $popup-close-back: #000;
 /*---------- /popup ---------*/
 
 /*---------- websters-select ----------*/
-$websters-select-border: #ddd;
-$websters-select-opened: #2a2b76;
 $websters-select-back: #fff;
-$websters-select-item-color: #bbb;
-$websters-select-popup-item-active-color: #bbb;
+$websters-select-item-color: #9e9e9e;
 /*---------- /websters-select ---------*/
 
 /*---------- btn ----------*/
+$btn-gradient: -webkit-linear-gradient( -45deg, rgb(0,238,227) 0%, rgb(0,183,203) 100%);
+$btn-gradient-revers: -webkit-linear-gradient( -45deg, rgb(0,183,203) 0%, rgb(0,238,227) 100%);
 $btn-back: #fff;
 //$btn-hover-back: $main-brown-light-color;
 $btn-2-color: #333;

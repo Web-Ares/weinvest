@@ -20,18 +20,16 @@ var paths = {
         {
             dist: 'index.min.js',
             contains: [
-                'app/js/jquery.main.js',
-                'app/js/jquery.animation.js'
+                'app/js/jquery.main.js'
             ]
         },
         {
             dist: 'listing.min.js',
             contains: [
                 'app/js/jquery.main.js',
-                'app/js/jquery.animation.js',
                 'app/js/jquery.map.js',
-                'app/js/jquery.listing.js'
-
+                'app/js/jquery.listing.js',
+                'app/js/jquery.websters-select.js'
             ]
         }
     ],

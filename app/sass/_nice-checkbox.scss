@@ -1,4 +1,5 @@
 .nice-checkbox {
+  position: relative;
   display: inline-block;
   vertical-align: top;
   user-select: none;
@@ -9,10 +10,10 @@
     clip: rect(0, 0, 0, 0);
 
     &:checked + label {
-      color: $nice-checkbox-active-color;
+      color: $main-green-color;
 
       &:after {
-        border-color: $nice-checkbox-active-color;
+
       }
       &:before {
         opacity: 1;
@@ -28,9 +29,10 @@
   }
   label {
     display: inline-block;
-    padding-right: 35px;
+    padding-left: 38px;
+    letter-spacing: 0.6px;
     font-size: 16px;
-    color: $nice-checkbox-color;
+    color: #7f7f7f;
     cursor: pointer;
     @include transition(color, .3, 0);
 
@@ -40,23 +42,28 @@
       content: '';
     }
     &:after {
-      top: 1px;
-      right: 38px;
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      border: 2px solid $nice-checkbox-color;
-      @include transition(border-color, .3, 0);
+      left: 0;
+      top: -2px;
+      width: 20px;
+      height: 20px;
+      border-radius: 3px;
+      background: #d9d9d9;
     }
     &:before {
       opacity: 0;
-      top: 5px;
-      right: 42px;
-      border-radius: 50%;
-      background: $nice-checkbox-active-color;
-      width: 4px;
-      height: 4px;
-      content: '';
+      z-index: 2;
+      top: -2px;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 3px;
+      background-color: rgb(0,221,219);
+      background-color: -webkit-linear-gradient(-45deg,  rgba(0,221,219,1) 0%,rgba(0,182,202,1) 100%);
+      background-color: linear-gradient(135deg,  rgba(0,221,219,1) 0%,rgba(0,182,202,1) 100%);
+      background-image: url('../img/check-icon.png');
+      background-size: 14px 10px;
+      background-position: center;
+      background-repeat: no-repeat;
       @include transition(opacity, .3, 0);
     }
     &:hover {

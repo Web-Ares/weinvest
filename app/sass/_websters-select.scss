@@ -1,0 +1,126 @@
+.websters-select {
+  //overflow: hidden;
+  vertical-align: middle;
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative;
+  width: 180px;
+  height: 39px;
+  border: 2px solid $main-border-color;
+  background: $websters-select-back;
+  cursor: pointer;
+  @include main-font5();
+
+  &_opened {
+
+    .websters-select__arrow {
+      transform: rotate(180deg);
+    }
+
+  }
+
+  &__arrow{
+    position: absolute;
+    top: 50%;
+    right: 19px;
+    width: 10px;
+    height: 6px;
+    margin-top: -3px;
+    transform-origin: center;
+    -webkit-transition: -webkit-transform 200ms ease-in-out;
+    transition: transform 200ms ease-in-out;
+
+    &:after,
+    &:before {
+      position: absolute;
+      top: 1px;
+      width: 6px;
+      height: 2px;
+      border-radius: 2px;
+      background: $websters-select-item-color;
+      content: '';
+    }
+
+    &:after {
+      left: 0;
+      transform: rotate(45deg);
+
+    }
+
+    &:before {
+      right: 0;
+      transform: rotate(-45deg);
+
+    }
+  }
+
+  &__item {
+    overflow: hidden;
+    @include absoluteCenterY();
+    z-index: 1;
+    right: 30px;
+    left: 16px;
+    padding: 1px 5px 0;
+    box-sizing: border-box;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+    color: $websters-select-item-color;
+  }
+
+  &_mobile {
+
+    select {
+      position: absolute;
+      top: 0;
+      bottom: -1px;
+      left: 1px;
+      width: 100%;
+    }
+
+  }
+
+  &_custom {
+
+    select {
+      position: absolute;
+      left: -100000px;
+    }
+
+  }
+
+  &__popup {
+    overflow: hidden;
+    position: absolute;
+    z-index: 10;
+    left: -2px !important;
+    box-sizing: border-box;
+    border: 2px solid $main-border-color;
+    background: $websters-select-back;
+    @include main-font3();
+
+    ul {
+      z-index: 1;
+    }
+
+    li {
+      padding: 6px 19px;
+      white-space: nowrap;
+      overflow: hidden;
+      background: transparent;
+      cursor: pointer;
+      color: $websters-select-item-color;
+      @include transition(all, .3,0);
+
+      &:hover {
+        background: $main-green-color;
+        color: $main-white-color;
+      }
+
+      &.active {
+        background: $main-green-color;
+        color: $main-white-color;
+      }
+    }
+  }
+}
