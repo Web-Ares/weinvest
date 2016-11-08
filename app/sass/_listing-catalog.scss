@@ -8,23 +8,46 @@
     position: fixed;
     z-index: 10;
     left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%) rotateX(0deg);
+    transform: translateX(-50%) rotateX(0deg);
     bottom: 30px;
+
+    > span {
+      opacity: 1;
+      @include transition(all, .3, 0);
+
+      &:nth-child(2) {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+    }
+
+    &.active {
+
+      > span:nth-child(1) {
+        opacity: 0;
+      }
+      > span:nth-child(2) {
+        opacity: 1;
+      }
+    }
   }
 
   &__filter {
     position: fixed;
     z-index: 10;
     top: 0;
-    left: 48.7%;
-    width: 93.6%;
-    padding: 32px 15px;
+    width: 100%;
+    padding: 45px 15px 30px;
     background: $main-white-color;
     border-radius: 0 0 5px 5px;
     box-shadow: 0 0 54px 0 rgba(50, 50, 50, 0.18);
-    -webkit-transform: translate(-50%, -100%);
-    transform: translate(-50%, -100%);
+    -webkit-transform: translateY(-120%);
+    transform: translateY(-120%);
     @include transition(transform, .3, 0);
 
     fieldset {
@@ -57,7 +80,8 @@
           @include transition(color, .3, 0);
         }
 
-        &:focus {
+        &:focus,
+        &.active {
           border-color: #616161;
 
           &::-webkit-input-placeholder {
@@ -68,6 +92,10 @@
           }
           &.placeholder {
             color: transparent;
+          }
+
+          i {
+            color: $main-green-color;
           }
         }
       }
@@ -86,18 +114,15 @@
           width: 100%;
           padding-left: 47px;
 
-          &:focus {
-
-            i {
-              color: $main-green-color;
-            }
+          &:focus + i {
+            color: $main-green-color;
           }
         }
       }
     }
     &.active {
-      -webkit-transform: translate(-50%, 0%);
-      transform: translate(-50%, 0%);
+      -webkit-transform: translateY(0%);
+      transform: translateY(0%);
     }
   }
   &__filter-btn {
@@ -266,6 +291,7 @@
       border-top: 1px solid $main-border-color;
       cursor: pointer;
       font-size: 16px;
+      user-select: none;
       @include main-font5();
       @include transition(all, .3, 0);
 
@@ -276,6 +302,15 @@
       &.active {
         background: $main-green-color;
         color: $main-white-color;
+      }
+      &.disabled {
+        opacity: .4;
+        cursor: default;
+
+        &:hover {
+          background: transparent;
+          color: $main-black-color;
+        }
       }
     }
   }
@@ -297,7 +332,6 @@
 
       &:last-child {
         margin-right: 0;
-        margin-bottom: 0;
       }
       &:hover {
         background: #292929;
@@ -599,6 +633,9 @@
   .listing {
     padding-top: 0;
 
+    .btn-filter {
+      display: none;
+    }
     &__filter {
       position: relative;
       left: -2px;

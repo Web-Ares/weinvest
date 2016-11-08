@@ -71,10 +71,17 @@
 
                 <!--btn-filter-->
                 <button class="btn-filter">
+
                     <span>
                         <span></span>
                         Filter
                     </span>
+
+                    <span>
+                        <span></span>
+                        Close
+                    </span>
+
                 </button>
                 <!--/btn-filter-->
 
@@ -193,15 +200,14 @@
 
                                 </div>
                                 <!--/listing__filter-budget-inputs-->
-
                                 <!--listing__filter-budget-list-->
                                 <ul class="listing__filter-budget-list listing__filter-budget-list_min">
 
-                                    <li>100</li>
-                                    <li>200</li>
-                                    <li>300</li>
-                                    <li>400</li>
-                                    <li>500</li>
+                                    <li>1.000 €</li>
+                                    <li>2.000 €</li>
+                                    <li>3.000 €</li>
+                                    <li>4.000 €</li>
+                                    <li>5.000 €</li>
 
                                 </ul>
                                 <!--/listing__filter-budget-list-->
@@ -209,12 +215,12 @@
                                 <!--listing__filter-budget-list-->
                                 <ul class="listing__filter-budget-list listing__filter-budget-list_max">
 
-                                    <li>200</li>
-                                    <li>300</li>
-                                    <li>400</li>
-                                    <li>500</li>
-                                    <li>600</li>
-                                    <li>700</li>
+                                    <li>2.000 €</li>
+                                    <li>3.000 €</li>
+                                    <li>4.000 €</li>
+                                    <li>5.000 €</li>
+                                    <li>6.000 €</li>
+                                    <li>7.000 €</li>
 
                                 </ul>
                                 <!--/listing__filter-budget-list-->
@@ -229,11 +235,81 @@
                     <!--/listing__filter-categories-->
 
                     <!--listing__filter-location-->
-                    <fieldset class="listing__filter-location">
+                    <fieldset class="listing__filter-location search-autocomplite">
+
+                        <input type="text" placeholder="Localisation" autocomplete="off">
 
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
 
-                        <input type="text" placeholder="Localisation">
+                        <!-- search-autocomplite__list -->
+                        <div class="search-autocomplite__list">
+                            <ul>
+                                <li> <span>1070</span> Anderlecht </li>
+                                <li> <span>5300</span> Andenne </li>
+                                <li> <span>5330</span> Assesse </li>
+                                <li> <span>1160</span> Auderghem </li>
+                                <li> <span>1320</span> Beauvechain </li>
+                                <li> <span>1082</span> Berchem-Sainte-Agathe </li>
+                                <li> <span>1000</span> Bruxelles-Ville </li>
+                                <li> <span>1490</span> Court-St-Etienne </li>
+                                <li> <span>1325</span> Chaumont-Gistoux </li>
+                                <li> <span>1450</span> Chastre </li>
+                                <li> <span>1700</span> Dilbeek</li>
+                                <li> <span>1620</span> Drogenbos </li>
+                                <li> <span>5310</span> Eghezée </li>
+                                <li> <span>1040</span> Etterbeek </li>
+                                <li> <span>1140</span> Evere </li>
+                                <li> <span>5380</span> Fernelmont </li>
+                                <li> <span>5150</span> Floreffe </li>
+                                <li> <span>1190</span> Forest </li>
+                                <li> <span>5070</span> Fosses-la-Ville </li>
+                                <li> <span>1083</span> Ganshoren </li>
+                                <li> <span>5030</span> Gembloux </li>
+                                <li> <span>5340</span> Gesves </li>
+                                <li> <span>1390</span> Grez-D’oiceau </li>
+                                <li> <span>1560</span> Hoeilaart </li>
+                                <li> <span>1050</span> Ixelles </li>
+                                <li> <span>1315</span> Incourt </li>
+                                <li> <span>5190</span> Jemeppe-sur-Sambre </li>
+                                <li> <span>1090</span> Jette </li>
+                                <li> <span>1370</span> Jodoigne </li>
+                                <li> <span>1081</span> Koekelberg </li>
+                                <li> <span>1950</span> Kraainem</li>
+                                <li> <span>5080</span> La-bruyère </li>
+                                <li> <span>1310</span> La-Hulpe </li>
+                                <li> <span>1380</span> Lasne </li>
+                                <li> <span>1630</span> Linkebeek</li>
+                                <li> <span>5640</span> Mettet </li>
+                                <li> <span>1080</span> Molenbeek-Saint-Jean </li>
+                                <li> <span>1435</span> Mont-Saint-Guibert </li>
+                                <li> <span>5000</span> Namur </li>
+                                <li> <span>5350</span> Ohey </li>
+                                <li> <span>1340</span> Ottignies </li>
+                                <li> <span>3090</span> Overijse </li>
+                                <li> <span>1360</span> Perwez </li>
+                                <li> <span>5170</span> Profondeville </li>
+                                <li> <span>1640</span> Rhode-Sainte-Genèse</li>
+                                <li> <span>1330</span> Rixensart </li>
+                                <li> <span>1060</span> Saint-Gilles </li>
+                                <li> <span>1210</span> Saint-Josse-ten-Noode </li>
+                                <li> <span>5060</span> Sambreville </li>
+                                <li> <span>1030</span> Schaerbeek </li>
+                                <li> <span>1932</span> Sint-Stevens-Woluwe</li>
+                                <li> <span>5140</span> Sombreffe </li>
+                                <li> <span>1933</span> Sterrebeek</li>
+                                <li> <span>3080</span> Tervuren</li>
+                                <li> <span>1180</span> Uccle </li>
+                                <li> <span>1410</span> Waterloo </li>
+                                <li> <span>1170</span> Watermael-Boitsfort </li>
+                                <li> <span>1457</span> Walhain </li>
+                                <li> <span>1300</span> Wavre </li>
+                                <li> <span>1970</span> Wezembeek-Oppem</li>
+                                <li> <span>1200</span> Woluwe-Saint-Lambert </li>
+                                <li> <span>1150</span> Woluwe-Saint-Pierre </li>
+                                <li> <span>1930</span> Zaventem</li>
+                            </ul>
+                        </div>
+                        <!-- /search-autocomplite__list -->
 
                     </fieldset>
                     <!--/listing__filter-location-->
@@ -247,34 +323,7 @@
                     </fieldset>
 
                     <!--listing__filter-results-->
-                    <div class="listing__filter-results">
-
-                        <span>
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                            appartement
-                        </span>
-
-                        <span>
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                            2 chambres
-                        </span>
-
-                        <span>
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                            Min 150.000 €
-                        </span>
-
-                        <span>
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                            Max 300.000 €
-                        </span>
-
-                        <span>
-                            <i class="fa fa-times" aria-hidden="true"></i>
-                            Woluwe-Saint-Pierre
-                        </span>
-
-                    </div>
+                    <div class="listing__filter-results"></div>
                     <!--/listing__filter-results-->
 
                 </form>

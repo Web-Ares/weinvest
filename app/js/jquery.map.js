@@ -19,7 +19,7 @@
 
 
         //private methods
-        var _init = function(){
+        var _constructor = function(){
                 _obj[ 0 ].obj = _self;
                 _onEvents();
                 google.maps.event.addDomListener(window, 'load', _initMap);
@@ -43,7 +43,7 @@
         //public properties
     
         //public methods
-        _init();
+        _constructor();
     };
     
 } )();

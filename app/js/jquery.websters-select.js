@@ -95,6 +95,12 @@ var WebstersSelect = function( params ){
         _onEvents = function(){
             _obj.on( 'change', function() {
                 _text.text( $( this ).find( 'option:selected' ).text() );
+
+                if( _opened ){
+                    _hidePopup();
+                } else {
+                    _showPopup();
+                }
             } );
 
             if( _optionType == 1 && !_device ){

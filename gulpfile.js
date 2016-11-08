@@ -29,6 +29,7 @@ var paths = {
                 'app/js/jquery.main.js',
                 'app/js/jquery.map.js',
                 'app/js/jquery.listing.js',
+                'app/js/jquery.listing-autocomplete.js',
                 'app/js/jquery.websters-select.js'
             ]
         }

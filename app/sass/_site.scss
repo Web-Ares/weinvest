@@ -1,13 +1,12 @@
 .site {
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
   z-index: 1;
   min-width: 320px;
   height: 100%;
   min-height: 100%;
   @include main-font1();
-  overflow-x: auto;
-  overflow-y: auto;
 
   &_no-scroll {
 
