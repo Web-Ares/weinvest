@@ -359,6 +359,17 @@
   &__wrap {
     padding: 0 15px;
   }
+  &__catalog {
+    position: relative;
+
+    &.loading {
+
+      .preloader {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
   &__catalog-gallery.swiper-container {
     position: absolute;
     width: 100%;
@@ -528,6 +539,7 @@
 
       strong {
         display: inline;
+        padding-right: 4px;
         color: #333333;
         letter-spacing: 0.7px;
         @include main-font2();

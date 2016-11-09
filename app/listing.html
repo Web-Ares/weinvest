@@ -86,7 +86,7 @@
                 <!--/btn-filter-->
 
                 <!--listing__filter-->
-                <form action="#" class="listing__filter">
+                <form action="https://crossorigin.me/http://webservices.whoman2.be/websiteservices/EstateService.svc/GetEstateList" class="listing__filter">
 
                     <fieldset>
 
@@ -108,9 +108,11 @@
                             <!--nice-checkbox-->
                             <div class="nice-checkbox">
 
-                                <input id="maison" type="checkbox">
-                                <label for="maison">Maisons</label>
+                                <!--category-item-->
+                                <input class="category-item" data-category="1" name="house" id="maison" type="checkbox">
+                                <!--/category-item-->
 
+                                <label for="maison">Maisons</label>
 
                             </div>
                             <!--/nice-checkbox-->
@@ -118,7 +120,9 @@
                             <!--nice-checkbox-->
                             <div class="nice-checkbox">
 
-                                <input id="appartement" type="checkbox">
+                                <!--category-item-->
+                                <input class="category-item" data-category="2" id="appartement" name="appartement" type="checkbox">
+                                <!--/category-item-->
                                 <label for="appartement">Appartement</label>
 
                             </div>
@@ -127,8 +131,11 @@
                             <!--nice-checkbox-->
                             <div class="nice-checkbox">
 
-                                <input id="terrains" type="checkbox">
-                                <label for="terrains">Terrains</label>
+                                <!--category-item-->
+                                <input class="category-item" name="terrain" id="terrain" data-category="3" type="checkbox">
+                                <!--/category-item-->
+
+                                <label for="terrain">Terrains</label>
 
                             </div>
                             <!--/nice-checkbox-->
@@ -334,6 +341,16 @@
 
                     <!--listing__catalog-->
                     <div class="listing__catalog">
+
+                        <!--preloader-->
+                        <div class="preloader">
+
+                            <!--preloader__inner-->
+                            <div class="preloader__inner"></div>
+                            <!--/preloader__inner-->
+
+                        </div>
+                        <!--/preloader-->
 
                         <!--listing__catalog-sort-->
                         <div class="listing__catalog-sort">

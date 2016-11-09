@@ -66,8 +66,6 @@
 
                 } else {
 
-                    console.log('_window <= 1200');
-
                     _obj.css({
                         height: 'auto'
                     });
@@ -194,6 +192,7 @@
             _obj = obj,
             _autocomplete = $( '.search-autocomplite' ),
             _body = $('body'),
+            _typeInputs = $('.category-item'),
             _closeOpenBtn = _obj.find('.btn-filter'),
             _budgetWrapper = _obj.find('.listing__filter-budget'),
             _priceItem = _obj.find('.listing__filter-budget-list > li'),
@@ -203,15 +202,22 @@
             _roomsSelect = _obj.find('.listing__filter-rooms select'),
             _filter = _obj.find('.listing__filter'),
             _resultList = _obj.find('.listing__filter-results'),
-            _catalogGalleries = $( '.listing__catalog-item-pics > .swiper-container' );
+            _catalog = _obj.find('.listing__catalog'),
+            _catalogList = _obj.find('.listing__catalog-list'),
+            _catalogGalleries = $( '.listing__catalog-item-pics > .swiper-container' ),
+            _canSendRequest = true,
+            _request = new XMLHttpRequest(),
+            _curUrlPart;
 
         //private methods
         var _constructor = function() {
-            _obj[ 0 ].obj = _self;
-            _onEvents();
-            _addSwiper();
-            _getMinMaxRoom();
-        },
+                _obj[ 0 ].obj = _self;
+                _onEvents();
+                // _addSwiper();
+                _getMinMaxRoom();
+                _loadData();
+                _checkUrl()
+            },
             _addLabel = function ( type, text, value ) {
 
                 var resultItems = _resultList.find(' > span '),
@@ -224,8 +230,6 @@
                     resultTypeItem.remove();
 
                 }
-
-                console.error(type, text, value);
 
                 if ( text == null ) {
 
@@ -244,7 +248,9 @@
             },
             _addSwiper = function () {
 
-                _catalogGalleries.each(function () {
+                console.log(_catalogGalleries.length);
+
+                $('.listing__catalog-gallery').each(function () {
 
                     var curSwiper = $( this );
 
@@ -255,6 +261,146 @@
                     });
 
                 })
+
+            },
+            _checkUrl= function() {
+
+                var url = document.location.href.split('/'),
+                    urlArr = [];
+
+                for ( var i = 0; i < url.length; i++ ) {
+
+                    urlArr.push( url[ i ] )
+
+                }
+
+                _curUrlPart = urlArr[ urlArr.length-1 ];
+
+            },
+            _createCard = function( curItem ) {
+
+                var curPrice = curItem.Price,
+                    curName = curItem.Name,
+                    curAddress = curItem.Address1,
+                    curSubCategory = curItem.SubCategory,
+                    curArea = curItem.Area,
+                    curBath = curItem.BathRooms,
+                    curPictures = curItem.Pictures,
+                    curRooms = curItem.Rooms,
+                    item = $('<a href="#" class="listing__catalog-item"></a>'),
+                    itemPic = $('<div class="listing__catalog-item-pics"></div>'),
+                    itemNameWrap = $('<div class="listing__catalog-item-name"></div>'),
+                    itemName = $('<div class="listing__catalog-name">'+curName+'</div>'),
+                    itemPrice = $('<div class="listing__catalog-price">'+curPrice+'</div>'),
+                    itemWrap = $('<div class="listing__catalog-item-wrap"></div>'),
+                    itemWrapTop = $('<div><strong>'+curSubCategory+'</strong><address>'+curAddress+'</address></div>'),
+                    itemWrapList = $('<ul></ul>'),
+                    swiper = $('<div class="listing__catalog-gallery swiper-container"></div>'),
+                    swiperWrap = $('<div class="swiper-wrapper"></div>'),
+                    swiperBtnNext = $('<div class="swiper-button-next"></div>'),
+                    swiperBtnprev = $('<div class="swiper-button-prev"></div>');
+
+                console.log( curPictures.length );
+
+                if ( curPictures.length ) {
+
+                    for( var i = 0; curPictures.length > i; i++ ){
+
+                        var curPicture = curPictures[i].UrlLarge;
+                        swiperWrap.append('<div class="swiper-slide" style="background-image: url('+curPicture+')"></div>')
+                    }
+
+                    swiper.append(swiperBtnNext);
+                    swiper.append(swiperBtnprev);
+
+                }
+
+                if ( curRooms !== null && curRooms !== 0 ) {
+
+                    itemWrapList.append('<li>'+curRooms+' chambres</li>')
+
+                }
+
+                if ( curBath !== null && curBath !== 0 ) {
+
+                    itemWrapList.append('<li>'+curBath+' salles de bain</li>')
+
+                }
+
+                if ( curArea !== null ) {
+
+                    itemWrapList.append('<li>'+curArea+' m2</li>')
+
+                }
+
+                item.append(itemPic);
+                item.append(itemWrap);
+                itemPic.append(itemNameWrap);
+                itemPic.append(swiper);
+                swiper.append(swiperWrap);
+                itemNameWrap.append(itemName);
+                itemNameWrap.append(itemPrice);
+                itemWrap.append(itemWrapTop);
+                itemWrap.append(itemWrapList);
+
+                return item;
+            },
+            _createCardsList = function( data ) {
+                var card;
+
+                _catalogList.html( '' );
+
+                $.each( data.d.EstateList, function() {
+
+                    card = _createCard( this );
+                    _catalogList.append( card );
+
+                });
+
+                setTimeout(function () {
+
+                    _addSwiper();
+
+                }, 100);
+
+                _catalog.removeClass( 'loading' );
+
+            },
+            _getCategoryArray = function() {
+
+                var typeArr = [];
+
+                _typeInputs.each(function (){
+
+                    var curInput = $( this );
+
+                    if ( curInput.prop( 'checked' ) ) {
+
+                        typeArr.push( curInput.data( 'category' ) );
+
+                    }
+
+                } );
+
+                return typeArr;
+            },
+            _getFilterString = function() {
+
+                var data = null;
+
+                data = {
+                    ClientId: "095007a7cd2c41238ad9",
+                    PurposeIDList:[ 1 ],
+                    StatusIDList:[1],
+                    RowsPerPage:20,
+                    Page: 0,
+                    Language:'fr-BE',
+                    ShowDetails:0,
+                    ZipList:[],
+                    PriceRange:[10000,900000000000]
+                };
+
+                return JSON.stringify( data );
 
             },
             _getMinRoom = function( rooms ) {
@@ -286,8 +432,6 @@
             _getMinMaxRoom = function( curSelect ) {
                 var rooms = [];
 
-                console.log(curSelect);
-
                 if (curSelect !== undefined) {
 
                     var selectedOption = curSelect.find( 'option' ).filter( ':selected' );
@@ -309,6 +453,17 @@
             },
             _onEvents = function() {
 
+                _typeInputs.on( {
+                    change: function() {
+
+                        var curInput = $( this ),
+                            curData = curInput.data('category'),
+                            curText = curInput.next().text();
+
+                        _addLabel(curData, null, curText);
+
+                    }
+                });
                 _priceFields.on( {
                     focus: function() {
 
@@ -469,6 +624,42 @@
                 }
 
             },
+            _sendRequest = function( requestData, newPage ) {
+
+                if( _canSendRequest ){
+
+                    _catalog.addClass('loading');
+
+                    _request.abort();
+
+                    _request = $.ajax({
+                        url: _filter.attr( 'action' ),
+                        data: 'EstateServiceGetEstateListRequest=' + requestData,
+                        dataType: 'json',
+                        timeout: 20000,
+                        type: 'GET',
+                        success: function ( data ) {
+
+                            console.log(data);
+                            _createCardsList( data );
+
+                        },
+                        error: function (XMLHttpRequest) {
+                            if (XMLHttpRequest.statusText != "abort") {
+                                console.log('err');
+                            }
+                        }
+                    });
+                }
+
+            },
+            _loadData = function(){
+
+                var data = _getFilterString( 0 );
+
+                _sendRequest( data, false );
+
+            },
             _uncheckRooms = function ( type, flag ) {
 
                 var curSelect = _roomsSelect.filter( '[name = '+type+']' ),
@@ -500,41 +691,33 @@
 
                 var curType = curItem.data('type');
 
-                switch ( curType ){
+                if ( curType == 'price-min' ) {
 
-                    case 'price-min':
+                    _budgetPriceListMin.find( 'li' ).removeClass( 'active' );
+                    _budgetPriceListMax.find( 'li' ).removeClass( 'disabled' );
+                    _priceFields.filter( '[name = price-min]').val( '' );
 
-                        _budgetPriceListMin.find( 'li' ).removeClass( 'active' );
-                        _budgetPriceListMax.find( 'li' ).removeClass( 'disabled' );
-                        _priceFields.filter( '[name = price-min]').val( '' );
-                        curItem.remove();
+                } else if ( curType == 'price-max' ) {
 
-                        break;
+                    _budgetPriceListMax.find( 'li' ).removeClass( 'active' );
+                    _budgetPriceListMin.find( 'li' ).removeClass( 'disabled' );
+                    _priceFields.filter( '[name = price-max]').val( '' );
 
-                    case 'price-max':
+                } else if ( curType == 'min-rooms' ) {
 
-                        _budgetPriceListMax.find( 'li' ).removeClass( 'active' );
-                        _budgetPriceListMin.find( 'li' ).removeClass( 'disabled' );
-                        _priceFields.filter( '[name = price-max]').val( '' );
-                        curItem.remove();
+                    _uncheckRooms( curType, true );
 
-                        break;
+                } else if ( curType == 'max-rooms' ) {
 
-                    case 'min-rooms':
+                    _uncheckRooms( curType, false );
 
-                        _uncheckRooms( curType, true );
-                        curItem.remove();
+                } else if ( curType !== 'location' ) {
 
-                        break;
-
-                    case 'max-rooms':
-
-                        _uncheckRooms( curType, false );
-                        curItem.remove();
-
-                        break;
+                    _typeInputs.filter('[data-category = '+curType+']')[0].checked = false
 
                 }
+
+                curItem.remove();
 
             };
 
